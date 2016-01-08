@@ -28,7 +28,17 @@ define(function (require, exports, module) {
     var NEW_CCEXT_MENU_NAME   = "New Creative Cloud Extension";
     var DEBUGMODE_ON_CMDID  = "CCExtBuilder.setDebugMode";
     var DEBUGMODE_ON_CMDNAME   = "Enable Debug Mode";
-    
+    var LAUNCH_CMDID  = "CCExtBuilder.launchExtension";
+    var LAUNCH_CMDNAME   = "Launch";
+    var DEBUG_CMDID  = "CCExtBuilder.debugExtension";
+    var DEBUG_CMDNAME   = "Debug…";
+    var MANIFEST_EDITOR_CMDID  = "CCExtBuilder.editManifest";
+    var MANIFEST_EDITOR_CMDNAME   = "Edit Manifest…";
+    var COMPILE_JSX_CMDID  = "CCExtBuilder.compileJSX";
+    var COMPILE_JSX_CMDNAME   = "Compile ExtendScript…";
+    var PACKAGE_CMDID  = "CCExtBuilder.packageZXP";
+    var PACKAGE_CMDNAME   = "Package Extension…";
+
     var SDK_FOLDER_NAME = "/CC-EXT-SDK/";
     var NODE_DOMAIN_LOCATION = "node/CCExtDomain";
     var SUCCESS_MSG = "Extension successfully created. Please Edit the manifest file according to your needs and launch the corresponding CC app.";
@@ -249,6 +259,30 @@ define(function (require, exports, module) {
             createPanel();
         }    
 
+        CommandManager.register(LAUNCH_CMDNAME, LAUNCH_CMDID, onMenuLaunchCCExt);    
+        function onMenuLaunchCCExt(){
+            alert('not yet implemented');
+        }    
+
+        CommandManager.register(DEBUG_CMDNAME, DEBUG_CMDID, onMenuDebugCCExt);    
+        function onMenuDebugCCExt(){
+            alert('not yet implemented');
+        }    
+
+        CommandManager.register(MANIFEST_EDITOR_CMDNAME, MANIFEST_EDITOR_CMDID, onMenuEditManifest);    
+        function onMenuEditManifest(){
+            alert('not yet implemented');
+        }    
+
+        CommandManager.register(COMPILE_JSX_CMDNAME, COMPILE_JSX_CMDID, onMenuCompileJSX);    
+        function onMenuCompileJSX(){
+            alert('not yet implemented');
+        }    
+
+        CommandManager.register(PACKAGE_CMDNAME, PACKAGE_CMDID, onMenuPackageZXP);    
+        function onMenuPackageZXP(){
+            alert('not yet implemented');
+        }    
 
         var ccextMenu =  Menus.getMenu(CCEXT_MENU_ID);
         if (!ccextMenu) {
@@ -259,6 +293,16 @@ define(function (require, exports, module) {
         ccextMenu.addMenuItem(NEW_CCEXT_CMDID);    
         
         //ccextMenu.addMenuDivider(Menus.BEFORE, NEW_CCEXT_COMMAND_ID);
+        ccextMenu.addMenuDivider();
+
+        ccextMenu.addMenuItem(LAUNCH_CMDID);
+        ccextMenu.addMenuItem(DEBUG_CMDID);    
+
+        ccextMenu.addMenuDivider();
+        
+        ccextMenu.addMenuItem(MANIFEST_EDITOR_CMDID);
+        ccextMenu.addMenuItem(COMPILE_JSX_CMDID);
+        ccextMenu.addMenuItem(PACKAGE_CMDID);
 
     }
     setupMenu();
