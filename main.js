@@ -125,11 +125,15 @@ define(function (require, exports, module) {
     function _processTemplate(templateString, data) {
         
         var str = templateString;
-        var reg1 = new RegExp("com.example.ext", "g");
-        str = str.replace(reg1, data.extid);
-        var reg2 = new RegExp("Extension-Name", "g");
-        str = str.replace(reg2, data.extname);
-        
+        str = str.replace(new RegExp("com.example.ext", "g"), data.extid);
+        str = str.replace(new RegExp("Extension-Name", "g"), data.extname);
+        str = str.replace(new RegExp("<!--@defheight-->", "g"), data.defheight);
+        str = str.replace(new RegExp("<!--@defwidth-->", "g"), data.defwidth);
+        str = str.replace(new RegExp("<!--@minheight-->", "g"), data.minheight);
+        str = str.replace(new RegExp("<!--@minwidth-->", "g"), data.minwidth);
+        str = str.replace(new RegExp("<!--@maxheight-->", "g"), data.maxheight);
+        str = str.replace(new RegExp("<!--@maxwidth-->", "g"), data.maxwidth);
+
         return str;
     }
         
@@ -204,7 +208,7 @@ define(function (require, exports, module) {
             var data = {
                 extid : $("#ccext-id").val(),
                 extname : $("#ccext-extname").val()
-                /*
+
                 host: HOSTS[parseInt($("#ccext-host").val(), 10)],
                 width: $("#ccext-extwidth").val(),
                 height: $("#ccext-extheight").val(),
@@ -212,7 +216,6 @@ define(function (require, exports, module) {
                 minheight: $("#ccext-extminheight").val(),
                 maxwidth: $("#ccext-extmaxwidth").val(),
                 maxheight: $("#ccext-extmaxheight").val()
-                */
             };
                         
             createExtension(data);
