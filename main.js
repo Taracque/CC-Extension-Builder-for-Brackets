@@ -78,9 +78,9 @@ define(function (require, exports, module) {
                 
         var cmd = "";
         if(isWin) {
-            cmd = '"'+sdkFolder.fullPath + "createext.bat" + '" default ' + data.extid + "'";
+            cmd = '"'+sdkFolder.fullPath + "createext.bat" + '" ' + data.template + ' ' + data.extid + "'";
         } else {
-            cmd = "'"+sdkFolder.fullPath + "createext.sh"  + "' default " + data.extid;
+            cmd = "'"+sdkFolder.fullPath + "createext.sh"  + "' " + data.template + " " + data.extid;
         } 
                 
         console.log("Brackets cmd:"+cmd);
@@ -206,16 +206,16 @@ define(function (require, exports, module) {
         $("#ccextSubmit").on("click", function (e) {
             
             var data = {
-                extid : $("#ccext-id").val(),
-                extname : $("#ccext-extname").val()
-
-                host: HOSTS[parseInt($("#ccext-host").val(), 10)],
-                width: $("#ccext-extwidth").val(),
-                height: $("#ccext-extheight").val(),
-                minwidth: $("#ccext-extminwidth").val(),
-                minheight: $("#ccext-extminheight").val(),
-                maxwidth: $("#ccext-extmaxwidth").val(),
-                maxheight: $("#ccext-extmaxheight").val()
+				extid : $("#ccext-id").val(),
+				extname : $("#ccext-extname").val(),
+				host: HOSTS[parseInt($("#ccext-host").val(), 10)],
+				width: $("#ccext-extwidth").val(),
+				height: $("#ccext-extheight").val(),
+				minwidth: $("#ccext-extminwidth").val(),
+				minheight: $("#ccext-extminheight").val(),
+				maxwidth: $("#ccext-extmaxwidth").val(),
+				maxheight: $("#ccext-extmaxheight").val(),
+				template: $("#ccext-template").val()
             };
                         
             createExtension(data);
